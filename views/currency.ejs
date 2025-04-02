@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Background Wrapper */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/currency.jpg') no-repeat center center/cover;
+            filter: brightness(50%); /* Fades the background */
+            z-index: -1;
+        }
+
+        /* Centering Container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height of viewport */
+            width: 100%;
+        }
+
+        /* Currency Converter Box */
+        .converter-container {
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #f4d03f; /* Gold Color */
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-top: 15px;
+            color: #f4d03f;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #f4d03f;
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e1c13b;
+        }
+
+        /* Error Message */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Exchange Rate List */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        li {
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Image with Fading Effect -->
+    <div class="background"></div>
+
+    <!-- Centering Wrapper -->
+    <div class="container">
+        <div class="converter-container">
+            <h1>Currency Converter</h1>
+
+            <% if (typeof error !== "undefined" && error) { %>
+                <p class="error"><%= error %></p>
+            <% } %>
+
+            <form action="/convert" method="get">
+                <label for="base">Base Currency:</label>
+                <input type="text" name="base" value="USD">
+                
+                <label for="symbols">Convert to:</label>
+                <input type="text" name="symbols" placeholder="e.g. EUR,GBP,INR" required>
+                
+                <button type="submit">Convert</button>
+            </form>
+
+            <% if (rates) { %>
+                <h2>Exchange Rates:</h2>
+                <ul>
+                    <% for (let currency in rates) { %>
+                        <li><%= currency %>: <%= rates[currency] %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

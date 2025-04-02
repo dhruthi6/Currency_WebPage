@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Currency Conversion Results</h1>
+    <p><strong>Base Currency:</strong> <%= base %></p>
+    <p><strong>Date:</strong> <%= date %></p>
+
+    <table>
+        <tr>
+            <th>Currency</th>
+            <th>Exchange Rate</th>
+        </tr>
+        <% for (let currency in rates) { %>
+            <tr>
+                <td><%= currency %></td>
+                <td><%= rates[currency] %></td>
+            </tr>
+        <% } %>
+    </table>
+
+    <a href="/currency" class="back-link">Convert Another Currency</a>
+
+</body>
+</html>
