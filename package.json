@@ -1,0 +1,21 @@
+{
+  "name": "msd_wp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhruthi6/Currency_WebPage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dhruthi6/Currency_WebPage/issues"
+  },
+  "homepage": "https://github.com/dhruthi6/Currency_WebPage#readme",
+  "description": ""
+}
